@@ -85,11 +85,13 @@ return [
     'handler_with' => [
         'host' => env('PAPERTRAIL_URL', null),
         'port' => env('PAPERTRAIL_PORT', null),
-        'connectionString' => (env('PAPERTRAIL_URL') && env('PAPERTRAIL_PORT'))
-            ? 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT')
+        // Simpankan connectionString dari logika env ini
+        'connectionString' => env('PAPERTRAIL_URL') && env('PAPERTRAIL_PORT')
+            ? 'tls://' . env('PAPERTRAIL_URL') . ':' . env('PAPERTRAIL_PORT')
             : null,
     ],
 ],
+
 
 
 
