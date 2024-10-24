@@ -58,8 +58,3 @@ Route::middleware(['auth:sanctum', 'role:administrator'])->group(function () {
     Route::put('users/{id}', [UserController::class, 'update']);
     Route::delete('users/{id}', [UserController::class, 'destroy']);
 });
-
-Route::get('/check-role', function () {
-    $user = User::find(5); // Ganti dengan ID user yang ingin dicek
-    return $user->getRoleNames(); // Mengecek role yang dimiliki oleh user
-});
