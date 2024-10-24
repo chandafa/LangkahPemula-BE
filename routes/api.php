@@ -8,6 +8,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Models\User;
+
 
 
 /*
@@ -55,4 +57,9 @@ Route::middleware(['auth:sanctum', 'role:administrator'])->group(function () {
     Route::get('users/{id}', [UserController::class, 'show']);
     Route::put('users/{id}', [UserController::class, 'update']);
     Route::delete('users/{id}', [UserController::class, 'destroy']);
+});
+
+Route::get('/check-role', function () {
+    $user = User::find(5); // Ganti dengan ID user yang ingin dicek
+    return $user->getRoleNames(); // Mengecek role yang dimiliki oleh user
 });
