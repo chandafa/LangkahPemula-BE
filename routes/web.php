@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/migrate-sessions', function () {
+    \Artisan::call('session:table');
+    \Artisan::call('migrate');
+    return 'Session table migrated!';
+});
